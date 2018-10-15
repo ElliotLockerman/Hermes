@@ -455,6 +455,12 @@
   [stationsTable reloadData];
 }
 
+- (void) playStation: (Station*)station {
+  [self selectStation: station];
+  [[HMSAppDelegate playback] playStation: station];
+  [stationsTable reloadData];
+}
+
 /* Callback for when the refresh stations button is hit */
 - (IBAction)refreshList: (id)sender {
   [stationsRefreshing setHidden:NO];

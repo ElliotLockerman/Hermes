@@ -48,6 +48,8 @@
 - (IBAction)refreshList: (id)sender;
 - (IBAction)addStation: (id)sender;
 
+- (void) playStation: (Station*)station;
+
 // Actions from new station sheet
 - (IBAction)search: (id)sender;
 - (IBAction)cancelCreateStation: (id)sender;

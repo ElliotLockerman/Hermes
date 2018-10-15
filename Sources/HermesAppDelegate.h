@@ -92,4 +92,7 @@
  */
 - (void)logMessage:(NSString *)message;
 
+
+- (void)statusMenuSelected:(id)sender;
+- (void)buildStatusMenuStations;
 @end

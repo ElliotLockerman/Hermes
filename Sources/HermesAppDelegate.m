@@ -16,6 +16,7 @@
 #import "StationController.h"
 #import "StationsController.h"
 #import "Notifications.h"
+#import "Pandora/Station.h"
 
 // strftime_l()
 #include <xlocale.h>
@@ -183,6 +184,13 @@
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
   // Must do this before the app is activated, or the menu bar doesn't draw.
   // <http://stackoverflow.com/questions/7596643/>
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector: @selector(buildStatusMenuStations)
+                                               name: PandoraDidLoadStationsNotification
+                                             object: nil];
+  
+  
   [self updateStatusItemVisibility:nil];
 }
 
@@ -260,6 +268,7 @@
   [playback prepareFirst];
 
   [self updateAlwaysOnTop:nil];
+  [self updateStatusItemVisibility:nil];
 }
 
 - (void)applicationWillResignActive:(NSNotification *)aNotification {
@@ -479,6 +488,32 @@
 
 #pragma mark - Status item display
 
+- (void) statusMenuSelected:(id)sender {
+  NSLog(@"Selected %@", sender);
+  [stations playStation: [sender valueForKey: @"representedObject"]];
+}
+
+- (void) buildStatusMenuStations {
+//  PandoraDidLoadStationsNotification
+  NSLog(@"\n\n\nBuilding menu length %lu\n\n",  (unsigned long)[[pandora stations] count]);
+  int location = 12;
+  for (Station *s in [pandora stations]) {
+    NSLog(@"Station: %@", [s name]);
+    NSMenuItem* item = [statusBarMenu insertItemWithTitle: [s name]
+                                action: @selector(statusMenuSelected:)
+                         keyEquivalent: @""
+                               atIndex: location];
+    [item setRepresentedObject: s];
+    ++location;
+  
+  }
+  
+  [statusBarMenu insertItem: [NSMenuItem separatorItem]
+                    atIndex: location];
+  NSLog(@"\n\n");
+  
+}
+
 - (IBAction) updateStatusItemVisibility:(id)sender {
   /* Transform the application appropriately */
   ProcessSerialNumber psn = { 0, kCurrentProcess };
@@ -519,6 +554,8 @@
 
   statusItem = [[NSStatusBar systemStatusBar]
                     statusItemWithLength:NSVariableStatusItemLength];
+  
+
   statusItem.menu = statusBarMenu;
   [statusItem.button addConstraint:
    [NSLayoutConstraint constraintWithItem:statusItem.button
@@ -531,6 +568,8 @@
 
   [self updateStatusItem:sender];
 }
+
+
 
 - (NSImage *) buildPlayPauseAlbumArtImage:(NSSize)size {
     
