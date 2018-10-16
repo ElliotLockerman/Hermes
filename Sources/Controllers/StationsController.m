@@ -359,6 +359,7 @@
     [self selectStation:selected];
   }
   [stationsTable reloadData];
+  [HMSAppDelegate buildStatusMenuStations];
 }
 
 /* Called whenever stations finish loading from pandora */
