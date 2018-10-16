@@ -496,20 +496,16 @@
 - (void) buildStatusMenuStations {
 //  PandoraDidLoadStationsNotification
   NSLog(@"\n\n\nBuilding menu length %lu\n\n",  (unsigned long)[[pandora stations] count]);
-  int location = 12;
+  [[self stationsMenu] removeAllItems];
+  
   for (Station *s in [pandora stations]) {
     NSLog(@"Station: %@", [s name]);
-    NSMenuItem* item = [statusBarMenu insertItemWithTitle: [s name]
-                                action: @selector(statusMenuSelected:)
-                         keyEquivalent: @""
-                               atIndex: location];
+    NSMenuItem* item = [[self stationsMenu] addItemWithTitle: [s name]
+                                                   action: @selector(statusMenuSelected:)
+                                            keyEquivalent: @""];
     [item setRepresentedObject: s];
-    ++location;
-  
   }
   
-  [statusBarMenu insertItem: [NSMenuItem separatorItem]
-                    atIndex: location];
   NSLog(@"\n\n");
   
 }

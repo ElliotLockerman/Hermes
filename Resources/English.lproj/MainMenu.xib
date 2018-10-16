@@ -651,7 +651,7 @@ DQ
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="157" y="162" width="480" height="313"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="745"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <value key="minSize" type="size" width="350" height="200"/>
             <view key="contentView" id="903">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="313"/>
@@ -908,6 +908,7 @@ Gw
                 <outlet property="scrobbler" destination="2007" id="2008"/>
                 <outlet property="station" destination="1730" id="1760"/>
                 <outlet property="stations" destination="537" id="1236"/>
+                <outlet property="stationsMenu" destination="MoC-ox-lNB" id="C0h-ee-0oS"/>
                 <outlet property="statusBarMenu" destination="2308" id="2312"/>
                 <outlet property="window" destination="371" id="532"/>
             </connections>
@@ -2286,6 +2287,16 @@ DQ
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="2314"/>
+                <menuItem title="Now Playing" enabled="NO" id="2310">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="(song)" enabled="NO" indentationLevel="1" id="2311">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="(artist)" enabled="NO" indentationLevel="1" id="2319">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="2322"/>
                 <menuItem title="Play" id="2309">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -2316,17 +2327,11 @@ DQ
                         <action selector="tired:" target="835" id="Z04-Pn-isP"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Stations" id="cnC-eQ-bUT">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Stations" id="MoC-ox-lNB"/>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="2318"/>
-                <menuItem title="Now Playing" enabled="NO" id="2310">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="(song)" enabled="NO" indentationLevel="1" id="2311">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="(artist)" enabled="NO" indentationLevel="1" id="2319">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="2322"/>
                 <menuItem title="About Hermes" id="Qwq-0z-jUK">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -2353,6 +2358,7 @@ DQ
                     </connections>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="-239.5" y="-300"/>
         </menu>
         <numberFormatter formatterBehavior="custom10_4" localizesFormat="NO" numberStyle="decimal" allowsFloats="NO" usesGroupingSeparator="NO" roundingMode="floor" minimumIntegerDigits="1" maximumIntegerDigits="5" id="EFh-JY-3EI" userLabel="Port Formatter">
             <real key="minimum" value="1"/>
@@ -2363,12 +2369,12 @@ DQ
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSDescendingSortIndicator" width="9" height="9"/>
         <image name="NSFollowLinkFreestandingTemplate" width="14" height="14"/>
-        <image name="NSFontPanel" width="32" height="32"/>
-        <image name="NSNetwork" width="32" height="32"/>
-        <image name="NSPreferencesGeneral" width="32" height="32"/>
+        <image name="NSFontPanel" width="128" height="128"/>
+        <image name="NSNetwork" width="128" height="128"/>
+        <image name="NSPreferencesGeneral" width="128" height="128"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
-        <image name="NSUser" width="32" height="32"/>
+        <image name="NSUser" width="128" height="128"/>
         <image name="cd" width="512" height="512"/>
         <image name="error_icon" width="128" height="128"/>
         <image name="fast_forward" width="128" height="128"/>

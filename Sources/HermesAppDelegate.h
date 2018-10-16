@@ -93,6 +93,8 @@
 - (void)logMessage:(NSString *)message;
 
 
+@property (weak) IBOutlet NSMenu *stationsMenu;
+
 - (void)statusMenuSelected:(id)sender;
 - (void)buildStatusMenuStations;
 @end
